@@ -35,26 +35,36 @@ function handleClick(event) {
     const currentGalIt = event.target.closest(".gallery__item");
   const galleryItem = galleryItems.find(({description}) => description === currentGalIt.description);
     console.log(galleryItem);
-   
+
    
 
 const instance = basicLightbox.create(`<div class="modal">
 <img src = "${event.target.dataset.source}"  width="800" height="600"></div>
-`)
+`, 
+{ onShow: (instance) => {
+  window.addEventListener("keydown", escBtn);
+},
 
-instance.show()
-    const modal = document.querySelector(".modal")
-  document.addEventListener("keydown", escBtn);
+onClose: (instance) => {
+  window.removeEventListener("keydown", escBtn)
+}
+
+});
+
+   instance.show()
+  function escBtn(event) {
+   
+    if (event.code === "Escape"){
+         
+ instance.close()}
+    }
+  
+  }
+   
+
 
  
-  function escBtn(event) {
-    console.log(event);
-    if (event.code === "Escape") {
-    
-        document.removeEventListener("keydown", escBtn)
-        
- instance.close(".modal")
-    }}
-  }
+  
+  
  
   

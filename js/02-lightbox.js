@@ -3,7 +3,7 @@ import { galleryItems } from './gallery-items.js';
 const list = document.querySelector(".gallery");
 console.log(galleryItems);
 list.insertAdjacentHTML("beforeend", createMarkup(galleryItems));
-list.addEventListener("click", handleClick);
+
 
 function createMarkup(arr) {
   return arr
@@ -18,11 +18,11 @@ function createMarkup(arr) {
     .join("");
    
 }
-function handleClick(event) {
-    event.preventDefault();
+
+   
 
 
 const lightbox = new SimpleLightbox('.gallery a', { 
     captionsData: `alt`,
     captionDelay: 250,
- })}
+ })
